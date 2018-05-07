@@ -7,18 +7,31 @@
 //
 
 #import <Foundation/Foundation.h>
-//引入头文件
-//核心库 -- 音视频编解码
-#import <libavcodec/avcodec.h>
-//导入封装格式库
-#import <libavformat/avformat.h>
+//导入头文件
+//核心库
+#include "libavcodec/avcodec.h"
+//封装格式处理库
+#include "libavformat/avformat.h"
+//工具库
+#include "libavutil/imgutils.h"
 
+//视频像素数据格式库
+#include "libswscale/swscale.h"
+#include "libswresample/swresample.h"
 @interface FFmpegtest : NSObject
 
-//测试ffmpeg配置
-+ (void)ffmpegTestConfig;
+//视频解码
++(void) ffmepgVideoDecode:(NSString*)inFilePath outFilePath:(NSString*)outFilePath;
 
-//指定打开一个文件
-+ (void)ffmpegOpenfile:(NSString *)filePath;
+//音频解码
++(void)ffmpegAudioDecode:(NSString*)inFilePath outFilePath:(NSString*)outFilePath;
+
+//FFmpeg视频编码
++(void)ffmpegVideoEncode:(NSString*)filePath outFilePath:(NSString*)outFilePath;
+
+//音频编码
++(void)ffmpegAudioEncode:(NSString*)inFilePath outFilePath:(NSString*)outFilePath;
+
+
 
 @end
